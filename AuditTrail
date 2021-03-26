@@ -1,0 +1,9 @@
+SELECT a.AccountNumber, RelationshipManager, PortfolioManager, InvestmentStrategy, A.USCoreEquityStrategyForCustomBlend, 
+A.USCoreFixedIncomeForCustomBlend, U.Login, E.AuditEventTime,A.AuditEventID, AuditEventIDOut, PortfolioBaseID, PortfolioManager, E.UserID
+FROM dbo.vAHAdvPortfolioBaseExt A
+INNER JOIN dbo.AdvAuditEvent E
+       ON A.AuditEventID = E.AuditEventID
+INNER JOIN dbo.AoUser U
+       ON U.UserID = E.UserID     
+WHERE a.AccountNumber = '999999999'
+ORDER BY A.AuditEventID DESC
